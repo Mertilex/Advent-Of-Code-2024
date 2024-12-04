@@ -2013,17 +2013,20 @@ class Day1Puzzle2()
 
         #endregion
 
-        firstList.Sort();
-        secondList.Sort();
-
-        var distanceCalculation = new List<int>();
+        var similarityScore = new List<int>();
 
         for (int i = 0; i < firstList.Count; ++i)
         {
-            distanceCalculation.Add(Math.Abs(firstList[i] - secondList[i]));
+            var currentNumber = firstList[i];
+            var countInSecondList = secondList.Count(x => x == currentNumber);
+
+            if(countInSecondList > 0)
+            {
+                similarityScore.Add(currentNumber * countInSecondList);
+            }
         }
 
-        var sum = distanceCalculation.Sum();
+        var sum = similarityScore.Sum();
 
         Console.WriteLine(sum);
 
