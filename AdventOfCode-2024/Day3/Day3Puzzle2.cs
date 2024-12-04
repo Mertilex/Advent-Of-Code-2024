@@ -1,17 +1,23 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class Day3Puzzle1
+public class Day3Puzzle2
 {
     public void ShowSolution()
     {
-        string pattern = @"mul\(\d{1,3},\d{1,3}\)";
+        
         string filePath = "Day3/input.txt";
-
         string fileContent = File.ReadAllText(filePath);
 
+        string disabledInstructionsPattern = @"don't\(\).*?do\(\)";
+        string result = Regex.Replace(fileContent, disabledInstructionsPattern, "");
+
+        disabledInstructionsPattern = @"don't\(\).*";
+        result = Regex.Replace(result, disabledInstructionsPattern, "");
+
+        string pattern = @"mul\(\d{1,3},\d{1,3}\)";
         Regex regex = new Regex(pattern);
-        MatchCollection matches = regex.Matches(fileContent);
+        MatchCollection matches = regex.Matches(result);
 
         var sum = 0;
         foreach (Match match in matches)
