@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-public class Day2Puzzle1()
+public class Day2Puzzle2()
 {
     private readonly List<List<int>> reports = [];
 
@@ -34,7 +34,7 @@ public class Day2Puzzle1()
         var safeReportsCount = 0;
         foreach (List<int> report in reports)
         {
-            if (IsReportSafe(report))
+            if (IsReportSafe(report) || IsReportSafeWithDampenerTolerance(report))
             {
                 ++safeReportsCount;
             }
@@ -70,4 +70,19 @@ public class Day2Puzzle1()
         return isLevelDecreasing || isLevelIncreasing;
     }
 
+    private bool IsReportSafeWithDampenerTolerance(List<int> report)
+    {
+        for (int i = 0; i < report.Count; ++i)
+        {
+            var modifiedReport = new List<int>(report);
+
+            modifiedReport.RemoveAt(i);
+            if(IsReportSafe(modifiedReport))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
