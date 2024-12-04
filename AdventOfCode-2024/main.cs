@@ -1,1 +1,1 @@
-new Day2Puzzle2().ShowSolution();
+new Day3Puzzle1().ShowSolution();
