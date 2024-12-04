@@ -1,29 +1,29 @@
-﻿#region "Input Declaration"
-
-var firstList = new List<int>()
+﻿class Day1Puzzle1()
 {
-    (18944),
-    (94847),
-};
+    public int ShowSolution()
+    {
+        #region "Input Declaration"
 
-var secondList = new List<int>()
-{
-    (47230),
-    (63037),
-};
+        var firstList = new List<int>() { (18944), (94847) };
 
-#endregion
+        var secondList = new List<int>() { (47230), (63037) };
 
-firstList.Sort();
-secondList.Sort();
+        #endregion
 
-var distanceCalculation = new List<int>();
+        firstList.Sort();
+        secondList.Sort();
 
-for(int i = 0; i < firstList.Count; ++i)
-{
-    distanceCalculation.Add(Math.Abs(firstList[i] - secondList[i]));
+        var distanceCalculation = new List<int>();
+
+        for (int i = 0; i < firstList.Count; ++i)
+        {
+            distanceCalculation.Add(Math.Abs(firstList[i] - secondList[i]));
+        }
+
+        var sum = distanceCalculation.Sum();
+
+        Console.WriteLine(sum);
+
+        return sum;
+    }
 }
-
-var sum = distanceCalculation.Sum();
-
-Console.WriteLine(sum);
